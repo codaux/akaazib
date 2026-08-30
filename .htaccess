@@ -1,0 +1,23 @@
+Options -Indexes
+
+<FilesMatch "^(\.env|\.env\..*|\.git|\.user\.ini|artisan|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|webpack\.mix\.js)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)(/|$) - [F,L]
+    RewriteCond %{HTTPS} off 
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+<IfModule mod_php.c>
+    php_value error_reporting 8191
+    php_flag display_errors Off
+</IfModule>
