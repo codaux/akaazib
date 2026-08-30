@@ -3,10 +3,15 @@ deployment:
   tasks:
     - export REPOPATH=/home/cp42689/Akaazib
     - export DEPLOYPATH=/home/cp42689/public_html/
-    - cd $REPOPATH && composer install --no-dev --optimize-autoloader --no-interaction
-    - cd $REPOPATH && php artisan optimize:clear
-    - cd $REPOPATH && php artisan config:cache
-    - cd $REPOPATH && php artisan view:cache
+    - export LOGPATH=/home/cp42689/akaazib-deploy.log
+    - /bin/date > $LOGPATH
+    - echo "Akaazib deploy started" >> $LOGPATH
+    - cd $REPOPATH && if [ -x /opt/alt/php85/usr/bin/php ]; then PHPBIN=/opt/alt/php85/usr/bin/php; elif [ -x /opt/cpanel/ea-php85/root/usr/bin/php ]; then PHPBIN=/opt/cpanel/ea-php85/root/usr/bin/php; else PHPBIN=php; fi; $PHPBIN -v >> $LOGPATH 2>&1
+    - cd $REPOPATH && if [ -x /opt/alt/php85/usr/bin/php ]; then PHPBIN=/opt/alt/php85/usr/bin/php; elif [ -x /opt/cpanel/ea-php85/root/usr/bin/php ]; then PHPBIN=/opt/cpanel/ea-php85/root/usr/bin/php; else PHPBIN=php; fi; if [ -f /opt/cpanel/composer/bin/composer ]; then COMPOSER_MEMORY_LIMIT=-1 $PHPBIN /opt/cpanel/composer/bin/composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --no-progress >> $LOGPATH 2>&1; else COMPOSER_MEMORY_LIMIT=-1 composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --no-progress >> $LOGPATH 2>&1; fi
+    - cd $REPOPATH && if [ -x /opt/alt/php85/usr/bin/php ]; then PHPBIN=/opt/alt/php85/usr/bin/php; elif [ -x /opt/cpanel/ea-php85/root/usr/bin/php ]; then PHPBIN=/opt/cpanel/ea-php85/root/usr/bin/php; else PHPBIN=php; fi; $PHPBIN artisan optimize:clear >> $LOGPATH 2>&1
+    - cd $REPOPATH && if [ -x /opt/alt/php85/usr/bin/php ]; then PHPBIN=/opt/alt/php85/usr/bin/php; elif [ -x /opt/cpanel/ea-php85/root/usr/bin/php ]; then PHPBIN=/opt/cpanel/ea-php85/root/usr/bin/php; else PHPBIN=php; fi; $PHPBIN artisan config:cache >> $LOGPATH 2>&1
+    - cd $REPOPATH && if [ -x /opt/alt/php85/usr/bin/php ]; then PHPBIN=/opt/alt/php85/usr/bin/php; elif [ -x /opt/cpanel/ea-php85/root/usr/bin/php ]; then PHPBIN=/opt/cpanel/ea-php85/root/usr/bin/php; else PHPBIN=php; fi; $PHPBIN artisan view:cache >> $LOGPATH 2>&1
+    - /bin/cp cpanel-public-index.php $DEPLOYPATH/index.php
     - /bin/cp -R public/css $DEPLOYPATH
     - /bin/cp -R public/fonts $DEPLOYPATH
     - /bin/cp -R public/img $DEPLOYPATH
