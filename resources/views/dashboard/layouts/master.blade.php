@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>پنل مدیریت اکاذیب</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css' . '?id=' . filemtime('css/app.css')) }}">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     @yield('ex-css')
 
     <style>
@@ -63,7 +63,7 @@
             </div>
         </div>
     </section>
-    <script src="{{ asset('js/app.js') . '?id=' . filemtime('js/app.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
     @yield('ex-js')
 </body>
 

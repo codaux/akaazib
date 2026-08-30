@@ -5,6 +5,7 @@
 /.env.*
 !/.env.example
 /.phpunit.result.cache
+/.phpunit.cache
 
 /public/hot
 /public/storage
@@ -27,3 +28,4 @@ yarn-debug.log
 yarn-error.log
 
 *.zip
+composer.phar

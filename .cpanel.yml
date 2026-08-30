@@ -1,7 +1,12 @@
 ---
 deployment:
   tasks:
+    - export REPOPATH=/home/cp42689/Akaazib
     - export DEPLOYPATH=/home/cp42689/public_html/
+    - cd $REPOPATH && composer install --no-dev --optimize-autoloader --no-interaction
+    - cd $REPOPATH && php artisan optimize:clear
+    - cd $REPOPATH && php artisan config:cache
+    - cd $REPOPATH && php artisan view:cache
     - /bin/cp -R public/css $DEPLOYPATH
     - /bin/cp -R public/fonts $DEPLOYPATH
     - /bin/cp -R public/img $DEPLOYPATH

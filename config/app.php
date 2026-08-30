@@ -162,7 +162,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        Hekmatinasser\Verta\VertaServiceProvider::class,
         /*
          * Package Service Providers...
          */

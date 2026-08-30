@@ -27,7 +27,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css'."?id=".filemtime('css/app.css')) }}">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     @yield('ex-css')
 </head>
 
@@ -49,7 +49,7 @@
             @show
         </div>
     </div>
-    <script src="{{ asset('js/app.js')."?id=".filemtime('js/app.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
     @yield('ex-js')
 </body>
 
