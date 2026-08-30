@@ -12,6 +12,8 @@ deployment:
     - cd $REPOPATH && if [ -x /opt/alt/php85/usr/bin/php ]; then PHPBIN=/opt/alt/php85/usr/bin/php; elif [ -x /opt/cpanel/ea-php85/root/usr/bin/php ]; then PHPBIN=/opt/cpanel/ea-php85/root/usr/bin/php; else PHPBIN=php; fi; $PHPBIN artisan config:cache >> $LOGPATH 2>&1
     - cd $REPOPATH && if [ -x /opt/alt/php85/usr/bin/php ]; then PHPBIN=/opt/alt/php85/usr/bin/php; elif [ -x /opt/cpanel/ea-php85/root/usr/bin/php ]; then PHPBIN=/opt/cpanel/ea-php85/root/usr/bin/php; else PHPBIN=php; fi; $PHPBIN artisan view:cache >> $LOGPATH 2>&1
     - /bin/cp cpanel-public-index.php $DEPLOYPATH/index.php
+    - /bin/chmod 755 $DEPLOYPATH
+    - /bin/chmod 644 $DEPLOYPATH/index.php
     - /bin/cp -R public/css $DEPLOYPATH
     - /bin/cp -R public/fonts $DEPLOYPATH
     - /bin/cp -R public/img $DEPLOYPATH
