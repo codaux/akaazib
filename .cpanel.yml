@@ -1,0 +1,16 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/cp42689/public_html/
+    - /bin/cp -R public/css $DEPLOYPATH
+    - /bin/cp -R public/fonts $DEPLOYPATH
+    - /bin/cp -R public/img $DEPLOYPATH
+    - /bin/cp -R public/js $DEPLOYPATH
+    - /bin/cp -R public/logo $DEPLOYPATH
+    - /bin/cp public/data.json $DEPLOYPATH
+    - /bin/cp public/deploy-check.txt $DEPLOYPATH
+    - /bin/cp public/favicon.ico $DEPLOYPATH
+    - /bin/cp public/google48a8d96a2360d52e.html $DEPLOYPATH
+    - /bin/cp public/mix-manifest.json $DEPLOYPATH
+    - /bin/cp public/robots.txt $DEPLOYPATH
+    - /bin/cp public/web.config $DEPLOYPATH
