@@ -34,13 +34,15 @@ body {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: white !important;
+    transition: color 2s ease;
 }
 
-a:hover {
-    text-decoration: none;
-    color: black;
+a:hover,
+a:focus {
+    text-decoration: none !important;
+    color: black !important;
 }
 
 #sidebar {
@@ -216,4 +218,11 @@ input:checked+.slider:before {
 
 .note-dropdown-menu.dropdown-menu.dropdown-style.show a {
     color: black;
+}
+
+.text-black a:hover,
+a.text-black:hover,
+.note-dropdown-menu.dropdown-menu.note-check.dropdown-fontsize.show a:hover,
+.note-dropdown-menu.dropdown-menu.dropdown-style.show a:hover {
+    color: white !important;
 }

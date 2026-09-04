@@ -10,3 +10,25 @@
 
 //font awsome
 @import "~font-awesome/scss/font-awesome";
+
+a,
+a:hover,
+a:focus {
+    text-decoration: none !important;
+}
+
+a {
+    transition: color 2s ease;
+}
+
+a:hover,
+a:focus {
+    color: #000 !important;
+}
+
+.text-black a:hover,
+a.text-black:hover,
+.note-dropdown-menu.dropdown-menu.note-check.dropdown-fontsize.show a:hover,
+.note-dropdown-menu.dropdown-menu.dropdown-style.show a:hover {
+    color: #fff !important;
+}
