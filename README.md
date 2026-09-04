@@ -33,7 +33,15 @@ Set the real database values in `.env` before running migrations or opening data
 
 This repository includes a VS Code task named `Laravel Preview Server`.
 
-When the folder opens, VS Code may ask whether automatic tasks are allowed. Allow it, then open:
+Start the local server from VS Code's integrated terminal:
+
+```powershell
+php artisan serve --host=127.0.0.1 --port=8012
+```
+
+Alternatively, press `Ctrl+Shift+B` to run the same command as the default build task. When the folder opens, VS Code may also ask whether automatic tasks are allowed; allowing it starts the server automatically on future opens.
+
+After the terminal reports that the server is running, open:
 
 ```text
 http://127.0.0.1:8012

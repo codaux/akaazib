@@ -6,6 +6,10 @@
             "type": "shell",
             "command": "php artisan serve --host=127.0.0.1 --port=8012",
             "isBackground": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "problemMatcher": {
                 "owner": "php",
                 "pattern": {
@@ -22,9 +26,11 @@
                 "runOn": "folderOpen"
             },
             "presentation": {
-                "reveal": "silent",
+                "reveal": "always",
                 "panel": "dedicated",
-                "clear": true
+                "clear": true,
+                "focus": false,
+                "showReuseMessage": false
             }
         }
     ]
